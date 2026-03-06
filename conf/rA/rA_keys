@@ -24,26 +24,33 @@ interface eth1
  ip ospf area 1
  ip ospf authentication key-chain 2
  ip ospf network point-to-multipoint
+ ip ospf priority 10
  ipv6 ospf6 area 1
  ipv6 ospf6 authentication keychain 2
  ipv6 ospf6 network point-to-multipoint
+ ipv6 ospf6 priority 10
 exit
 !
 interface eth2
  ip ospf area 0
  ip ospf authentication key-chain 1
  ip ospf network point-to-point
+ ip ospf priority 10
  ipv6 ospf6 area 0
  ipv6 ospf6 authentication keychain 1
  ipv6 ospf6 network point-to-point
+ ipv6 ospf6 priority 10
 exit
 !
 interface eth3
  ip ospf area 0
  ip ospf authentication key-chain 1
  ip ospf network point-to-point
+ ip ospf priority 10
  ipv6 ospf6 area 0
+ ipv6 ospf6 authentication keychain 1
  ipv6 ospf6 network point-to-point
+ ipv6 ospf6 priority 10
 exit
 !
 interface lo
