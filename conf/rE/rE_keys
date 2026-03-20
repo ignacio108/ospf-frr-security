@@ -6,7 +6,7 @@ ip forwarding
 ipv6 forwarding
 service integrated-vtysh-config
 !
-key chain 1
+key chain 2
  key 1
   cryptographic-algorithm hmac-sha-256
   key-string clave2
@@ -15,10 +15,10 @@ exit
 !
 interface eth1
  ip ospf area 1
- ip ospf authentication key-chain 1
+ ip ospf authentication key-chain 2
  ip ospf network point-to-multipoint
  ipv6 ospf6 area 1
- ipv6 ospf6 authentication keychain 1
+ ipv6 ospf6 authentication keychain 2
  ipv6 ospf6 network point-to-multipoint
 exit
 !

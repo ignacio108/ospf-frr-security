@@ -81,7 +81,7 @@ def main():
         print("Argumento routername inválido, tiene que ser una array de al menos un elemento")
         sys.exit(1)
     elif(len(args.routername)==1 and args.routername[0]=="all"):
-        router_list = ["rA","rB","rC","rD","rE"]
+        router_list = ["rA","rB","rC","rd","rE"]
     else:
         router_list=args.routername
 

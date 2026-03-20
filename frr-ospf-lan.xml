@@ -135,7 +135,7 @@
     </exec>
   </vm>
 
-  <vm name="rD" type="lxc" subtype="" os="" exec_mode="lxc-attach" arch="x86_64">
+  <vm name="rd" type="lxc" subtype="" os="" exec_mode="lxc-attach" arch="x86_64">
     <filesystem type="cow">filesystems/rootfs_lxc</filesystem>
     <if id="1" net="NetA">
       <ipv4>10.7.1.2/24</ipv4>
@@ -209,6 +209,12 @@
     <!-- Instalamos /etc/hosts -->
     <exec seq="on_boot,start" type="verbatim">
         cat /tmp/hosts >> /etc/hosts
+    </exec>
+    <exec seq="on_boot" type="verbatim" ostype="system">
+      sed -i -e 's/ospfd=.*/ospfd=yes/' /etc/frr/daemons
+      sed -i -e 's/ospf6d=.*/ospf6d=yes/' /etc/frr/daemons
+      sed -i -e 's/zebra_options=.*/zebra_options="  -A 0.0.0.0 -s 90000000"/' /etc/frr/daemons
+      systemctl restart frr
     </exec>
   </vm>
 
