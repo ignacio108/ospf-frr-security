@@ -1,5 +1,3 @@
-Building configuration...
-
 Current configuration:
 !
 frr version 10.2.1
@@ -10,11 +8,12 @@ no ip forwarding
 no ipv6 forwarding
 service integrated-vtysh-config
 !
-ip route 10.7.2.0/25 Null0
-ip route 10.7.3.0/25 Null0
-ip route 10.7.4.0/25 Null0
-ip route 10.7.5.0/25 Null0
-ip route 10.8.1.0/25 Null0
+ip route 10.8.1.0/24 Null0
+!
+interface dummy0
+ ip ospf area 1
+ ip ospf cost 5
+exit
 !
 interface eth1
  ip ospf area 1
@@ -24,10 +23,13 @@ interface eth1
  ipv6 ospf6 priority 10
 exit
 !
+interface lo
+ ip address 10.8.1.1/24
+ ip ospf area 1
+exit
+!
 router ospf
  ospf router-id 10.7.0.66
- redistribute connected
- redistribute static metric 10
  area 1 range 10.7.1.0/24
 exit
 !

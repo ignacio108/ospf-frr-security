@@ -216,6 +216,21 @@
       sed -i -e 's/zebra_options=.*/zebra_options="  -A 0.0.0.0 -s 90000000"/' /etc/frr/daemons
       systemctl restart frr
     </exec>
+    <filetree seq="loadha" root="/etc/frr/frr.conf" perms="755">conf/hosts/hA/hA</filetree>
+    <exec seq="loadha" type="verbatim" ostype="system">
+      systemctl restart frr
+    </exec>
+    <filetree seq="loadha_prefix" root="/etc/frr/frr.conf" perms="755">conf/hosts/hA/hA_Prefix_Hijacking</filetree>
+    <exec seq="loadha_prefix" type="verbatim" ostype="system">
+      systemctl restart frr
+    </exec>
+    <filetree seq="loadha_spoofing" root="/etc/frr/frr.conf" perms="755">conf/hosts/hA/hA_Spoofing</filetree>
+    <exec seq="loadha_spoofing" type="verbatim" ostype="system">
+      ip link add dummy0 type dummy
+      ip addr add 10.8.1.1/24 dev dummy0
+      ip link set dummy0 up
+      systemctl restart frr
+    </exec>
   </vm>
 
   <vm name="hB" type="lxc" arch="x86_64">

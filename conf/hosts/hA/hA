@@ -1,0 +1,24 @@
+Current configuration:
+!
+frr version 10.2.1
+frr defaults traditional
+hostname hA
+log syslog informational
+no ip forwarding
+no ipv6 forwarding
+service integrated-vtysh-config
+!
+interface eth1
+ ip ospf area 1
+ ip ospf network point-to-multipoint
+ ipv6 ospf6 area 1
+ ipv6 ospf6 network point-to-multipoint
+ ipv6 ospf6 priority 10
+exit
+!
+router ospf
+ ospf router-id 10.7.0.66
+ area 1 range 10.7.1.0/24
+exit
+!
+end
